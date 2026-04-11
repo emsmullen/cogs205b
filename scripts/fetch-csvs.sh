@@ -18,8 +18,7 @@ mkdir -p data/$dt
 mv temp_for_zip_extract/*csv ../data/$dt
 rm -r temp_for_zip_extract temp.zip
 
-git add ./data/
-git add ./scripts/fetch-csvs.sh
+git add ./data/ ./scripts/fetch-csvs.sh
 git commit -m "added data for $dt and fetch-csvs.sh script"
 git push -u origin main
 
