@@ -14,8 +14,9 @@ unzip temp.zip -d temp_for_zip_extract
 
 #get the date and make a new directory in data with that date, then move the csv files into that directory and remove the temporary directory and zip file
 dt=$(date '+%Y-%m-%d')
+echo dt
 mkdir -p data/$dt
-mv temp_for_zip_extract/*csv ../data/$dt
+mv temp_for_zip_extract/*csv ./data/$dt
 rm -r temp_for_zip_extract temp.zip
 
 git add ./data/ ./scripts/fetch-csvs.sh
