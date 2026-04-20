@@ -4,13 +4,9 @@ import numpy as np
 
 class SignalDetection:
     def __init__(self, hits, misses, false_alarms, correct_rejections):
-        # Convert to integers in case they are passed as floats or strings
-        hits = int(hits)
-        misses = int(misses)
-        false_alarms = int(false_alarms)
-        correct_rejections = int(correct_rejections)
+        # Checlk that all counts are non-negative integers
         
-        if hits < 0 or misses < 0 or false_alarms < 0 or correct_rejections < 0:
+        if type(hits) is not int or type(misses) is not int or type(false_alarms) is not int or type(correct_rejections) is not int or hits < 0 or misses < 0 or false_alarms < 0 or correct_rejections < 0:
             raise ValueError("All counts (hits, misses, false_alarms, rejections) must be non-negative integers.")
 
         self.hits = hits
@@ -58,13 +54,15 @@ class SignalDetection:
         fig, ax = plt.subplots()
         ax.plot(x, noise_dist, label = "Noise")
         ax.plot(x, signal_distr, label = "Signal")
+        
         ax.axvline(x = self.criterion(), color = "red", label = "Criterion")
         ax.plot((0, d_prime), (max(signal_distr), max(signal_distr)), 'k-', label = "d'")
+        
         ax.legend()
         ax.set_title("Signal and Noise Distributions")
         ax.set_xlabel("Sensory Continuum")
         ax.set_ylabel("Probability Density")
-        plt.show()
+        #plt.show()
         
         return fig, ax
         
