@@ -42,7 +42,7 @@ class SignalDetection:
         return SignalDetection(self.hits-other.hits, self.misses-other.misses,  self.false_alarms-other.false_alarms, self.correct_rejections-other.correct_rejections)
     def __mul__(self,factor):
         if not isinstance(factor, (int, float)):
-            raise ValueError("Your multiplicative factor must be a real number")
+            raise ValueError("Your multiplicative factor must be a non-negative number")
         return SignalDetection(hits = int(self.hits * factor), misses = int(self.misses * factor), false_alarms = int(self.false_alarms * factor), correct_rejections = int(self.correct_rejections * factor))
     def plot_sdt(self):
         #assume noise distribution is N(0,1) and signal distribution is N(d',1)
