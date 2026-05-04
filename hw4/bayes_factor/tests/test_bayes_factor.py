@@ -4,6 +4,20 @@ from bayes_factor import BayesFactor
 class TestBayesFactorMethods(unittest.TestCase):
     
     #core Bayes Factor math tests
+    def test_invalid_initialization(self):
+        with self.assertRaises(ValueError):
+            BayesFactor(n=-1, k=5)
+        with self.assertRaises(ValueError):
+            BayesFactor(n=10, k=-1)
+        with self.assertRaises(ValueError):
+            BayesFactor(n=10, k=11)
+        with self.assertRaises(ValueError):
+            BayesFactor(n=10.5, k=5)
+        with self.assertRaises(ValueError):
+            BayesFactor(n=10, k="not an integer")
+        with self.assertRaises(ValueError):            
+            BayesFactor(n="not an integer", k=5)
+    
     def test_likelihood(self):
         actual_bf = BayesFactor(n=10, k=5)
         expected_likelihood = 0.2460937500000001
