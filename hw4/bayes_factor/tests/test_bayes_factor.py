@@ -86,11 +86,11 @@ class TestBayesFactorMethods(unittest.TestCase):
         self.assertAlmostEqual(actual_bf.bayes_factor(), expected_bayes_factor, places=5)
         
         actual_bf = BayesFactor(n=100, k=100)
-        expected_bayes_factor = 0 / 1.0
+        expected_bayes_factor = 0
         self.assertAlmostEqual(actual_bf.bayes_factor(), expected_bayes_factor, places=5) 
         
         actual_bf = BayesFactor(n=100, k=0)
-        expected_bayes_factor = 0 / 1.0
+        expected_bayes_factor = 0
         self.assertAlmostEqual(actual_bf.bayes_factor(), expected_bayes_factor, places=5) 
           
     def test_bayes_factor_large_n_k(self):
